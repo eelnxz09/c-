@@ -1,35 +1,28 @@
 #include <iostream>
 using namespace std;
 
-class OuterClass {
-private:
-    int outerData;
-
+class Student {
 public:
-    class NestedClass {
-    private:
-        int nestedData;
-
+    class Marks {
     public:
-        NestedClass(int value) : nestedData(value) {}
+        int m1, m2, m3;
 
-        void displayNestedData() {
-            cout << "Nested Data: " << nestedData << endl;
+        void getInput() {
+            cout << "Enter marks for 3 subjects: ";
+            cin >> m1 >> m2 >> m3;
+        }
+
+        float getPercentage() {
+            int total = m1 + m2 + m3;
+            return total / 3.0;
         }
     };
-
-    void useNestedClass() {
-        int value;
-        cout << "Enter value for nested data: ";
-        cin >> value;
-
-        NestedClass nestedObj(value);
-        nestedObj.displayNestedData();
-    }
 };
 
 int main() {
-    OuterClass outerObj;
-    outerObj.useNestedClass();
+    Student::Marks marks;
+    marks.getInput();
+    float percentage = marks.getPercentage();
+    cout << "Percentage = " << percentage << endl;
     return 0;
 }
